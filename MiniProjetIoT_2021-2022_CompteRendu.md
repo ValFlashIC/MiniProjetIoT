@@ -1,39 +1,3 @@
-# H1
-## H2
-### H3
-#### H4
-##### H5
-###### H6
-
-Alternatively, for H1 and H2, an underline-ish style:
-
-Alt-H1
-======
-
-Alt-H2
-------
-
-
-https://github.com/ValFlashIC/MiniProjetIoT.git
-https://github.com/ValFlashIC/MiniProjetIoT/Images/Overview-of-the-OTAA-join-procedure.png
-
-Here's our logo (hover to see the title text):
-
-Inline-style: 
-
-![alt text](Images/Overview-of-the-OTAA-join-procedure.png "Logo Title Text 1")
-
-Reference-style: 
-![alt text][logo]
-
-[logo]: https://github.com/ValFlashIC/MiniProjetIoT/raw/master/Images/consommer_acv-4etapes_ademe.jpg "Logo Title Text 2"
-
-
-
-
-
-
-
 ISAAC--CHASSANDE Valentin
 
 ROVAREY Johan
@@ -54,7 +18,21 @@ IESE5 CSC
 
 I. [Introduction](#intro)
 
+
+
+
 II. [Architecture globale du réseau de sirènes d’alarme](#point1)
+
+On cherche à réaliser un objet connecté en LoRaWAN pour la sécurité des biens et des personnes.
+
+L’objet LoRaWAN est identifié par son DevEUI et associé à une pièce ou à un lieu. Il peut être enregistré sur un réseau public national en OTAA ou sur un réseau privé en OTAA comme CampusIoT. Cet objet pourrait participer à un réseau maillé LoRa (type Amazon Sidewalk).
+
+Pour l'instant, nous réalisons un objet connecté sur le réseau privé CampusIoT (réseau européen EU868) en activation OTAA, avec communication de classe A.
+
+![alt text](Images/cablage.png "Logo Title Text 1")
+
+
+
 
 III. [Sécurité globale](#point2)
 
