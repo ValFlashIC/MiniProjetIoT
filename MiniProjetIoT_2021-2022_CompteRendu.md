@@ -53,6 +53,8 @@ XV. [Conclusion](#conclu)
 
 ## I  Introduction <a name="intro"></a>
 
+Le but de ce projet est de concevoir une sirène connectée en réseau LoRa, capable de détecter une situation critique et d'alerter les usagers. Ce compte rendu présente donc une analyse du projet sous différents aspects, ainsi qu'une présentation de ce qui a été fait et de ce qui a été prévu de faire.
+
 
 
 
@@ -294,17 +296,5 @@ La TDOA a pour avantage de ne pas consommer d’énergie supplémentaire du côt
 
 ## XV Conclusion <a name="conclu"></a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Pour conclure, bien que sa conception ait à peine commencé, ce projet semble prometteur. Il s'inscrit dans les objectifs et peut faire face à la concurrence.
+Ce projet nous a permis de nous familiariser avec l'environnement LoRa et avec les outils et méthodes utiles pour analyser un projet au démarrage.
