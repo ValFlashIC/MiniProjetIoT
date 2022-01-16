@@ -17,17 +17,18 @@
 //#include "periph/rtc.h"
 #include "thread.h"
 
+#define MAX_TEMPERATURE 40000
 
 /* Declare globally the sensor device descriptor */
-//extern semtech_loramac_t loramac;  /* The loramac stack descriptor */
+extern semtech_loramac_t loramac;  /* The loramac stack descriptor */
 static lm75_t lm75;
 
 /* Device and application informations required for OTAA activation */
-/*static const uint8_t deveui[LORAMAC_DEVEUI_LEN] = { 0xe7, 0x10, 0xe3, 0xf7, 0xd7, 0x79, 0x00, 0xc6 };
+static const uint8_t deveui[LORAMAC_DEVEUI_LEN] = { 0xe7, 0x10, 0xe3, 0xf7, 0xd7, 0x79, 0x00, 0xc6 };
 static const uint8_t appeui[LORAMAC_APPEUI_LEN] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 static const uint8_t appkey[LORAMAC_APPKEY_LEN] = { 0x23, 0xea, 0x5e, 0x66, 0x40, 0x5e, 0xfa, 0x47, 0x56, 0xc0, 0xfb, 0x00, 0x82, 0x98, 0xf3, 0x1f };
 
-static cayenne_lpp_t lpp;*/
+static cayenne_lpp_t lpp;
 
 static volatile int flag;
 static volatile int flag_buzzer;
@@ -113,19 +114,19 @@ int main(void)
 	gpio_init_int(pin_button,GPIO_IN,GPIO_FALLING,button_handler, (void *)val_led);
 	gpio_init(pin_buzzer,GPIO_OUT);
 
-    /*semtech_loramac_set_deveui(&loramac, deveui);
+    semtech_loramac_set_deveui(&loramac, deveui);
     semtech_loramac_set_appeui(&loramac, appeui);
-    semtech_loramac_set_appkey(&loramac, appkey);*/
+    semtech_loramac_set_appkey(&loramac, appkey);
     
     /* change datarate to DR5 (SF7/BW125kHz) */
-    //semtech_loramac_set_dr(&loramac, 5);
+    semtech_loramac_set_dr(&loramac, 5);
     
-    /* start the OTAA join procedure *//*
+    /* start the OTAA join procedure */
     if (semtech_loramac_join(&loramac, LORAMAC_JOIN_OTAA) != SEMTECH_LORAMAC_JOIN_SUCCEEDED) {
         puts("Join procedure failed");
         return 1;
     }
-    puts("Join procedure succeeded");*/
+    puts("Join procedure succeeded");
 	
 	pid=thread_create(stack, sizeof(stack), THREAD_PRIORITY_MAIN-1, 0, thread_handler, NULL, "new thread");
 	
@@ -144,30 +145,25 @@ int main(void)
 			thread_wakeup(pid);
 		}
 		
-		/*cayenne_lpp_add_temperature(&lpp, 0, (float)temperature / 1000);
+		cayenne_lpp_add_temperature(&lpp, 0, (float)temperature / 1000);
 
         char message[32];
         sprintf(message, "T:%d.%dC",
                 (temperature / 1000), (temperature % 1000));
         printf("Sending message '%s'\n", message);
-*/
-        /* send the message here *//*
+
+        /* send the message here */
         uint8_t ret = semtech_loramac_send(&loramac, lpp.buffer, lpp.cursor);
         if (ret != SEMTECH_LORAMAC_TX_DONE) {
             printf("Cannot send lpp message, ret code: %d\n", ret);
         }
 		
 		printf("Sending LPP data\n");
-		*/
 		
+		cayenne_lpp_reset(&lpp);
 		
-		//generate_osc(554,100,0.5);
-		//val_led=1-val_led;
-        
-		//cayenne_lpp_reset(&lpp);
-		
-        /* wait 20 seconds between each message */
-        xtimer_sleep(5);
+        /* wait 180 seconds between each message */
+        xtimer_sleep(180);
     }
 
     return 0; /* should never be reached */
