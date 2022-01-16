@@ -14,10 +14,13 @@ Alt-H2
 ------
 
 
+https://github.com/ValFlashIC/MiniProjetIoT.git
+
 Here's our logo (hover to see the title text):
 
 Inline-style: 
-![alt text](https://github.com/ValFlashIC/MiniProjetIoT/raw/master/Images/consommer_acv-4etapes_ademe.jpg "Logo Title Text 1")
+
+![alt text](https://github.com/ValFlashIC/MiniProjetIoT/Images/consommer_acv-4etapes_ademe.jpg "Logo Title Text 1")
 
 Reference-style: 
 ![alt text][logo]
